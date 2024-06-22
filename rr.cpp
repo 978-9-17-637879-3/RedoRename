@@ -140,10 +140,13 @@ int main(int argc, char** argv) {
 #ifdef __RRPROGRESS
         using Resolution = std::chrono::duration<double, std::milli>;
 
-        auto const startTime = std::chrono::steady_clock::now();
         constexpr size_t NUM_BYTES_PER_MEBIBYTE = 1024 * 1024;
         auto const nodeSizeMB = (static_cast<double>(fs::file_size(node)) /
                                  static_cast<double>(NUM_BYTES_PER_MEBIBYTE));
+
+        std::cerr << "Hashing " << node << std::endl;
+
+        auto const startTime = std::chrono::steady_clock::now();
 
         hash = hashFile(node);
 
