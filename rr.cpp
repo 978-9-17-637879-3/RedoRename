@@ -160,7 +160,7 @@ int main(int argc, char** argv) {
         hash = hashFile(node);
 #endif
 
-        auto const& [it, valueInserted] = fileMap.emplace(hash, std::move(node));
+        auto const& [it, valueInserted] = fileMap.emplace(hash, node);
         if (!valueInserted) {
           std::cerr << "[COLLISION] " << it->second << " hashed to the same value as "
                     << node << '\n';
